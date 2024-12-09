@@ -11,10 +11,10 @@
 
 body{
     background-color: hsl(234, 17%, 12%);
-    background-image: url(./images/bg-stars.svg), url(./images/pattern-hills.svg);
-    background-position: top, bottom;
-    background-repeat: no-repeat, no-repeat;
-    background-size: 100% 75%, 150% 25%; /* kind of like width then height percentage */
+    background-image:url(./images/bg-stars.svg), url(./images/images_-_2024-12-09T154927.036-removebg-preview.png), url(./images/pattern-hills.svg);
+    background-position: top, top, bottom;
+    background-repeat: repeat, repeat-x, no-repeat;
+    background-size: 100% 75%, 50% 75%, 150% 25%; /* kind of like width then height percentage */
 }
 .num{
     backface-visibility: hidden;

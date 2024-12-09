@@ -1,7 +1,7 @@
-const seconds = document.querySelector(".seconds")
-const minutes = document.querySelector(".minutes")
-const hour = document.querySelector(".hour")
-const day = document.querySelector(".day")
+const seconds = document.querySelectorAll(".seconds")
+const minutes = document.querySelectorAll(".minutes")
+const hours = document.querySelectorAll(".hour")
+const days = document.querySelectorAll(".day")
 
 function christmasCountDown(){
     const today = new Date()
@@ -12,15 +12,47 @@ function christmasCountDown(){
 
     const seconds_diff = Math.floor((difference % (1000 * 60))/ 1000)
     const minutes_diff = Math.floor((difference %(1000 * 60 * 60))/ (1000 * 60)) ///The amount of minute after removing the hour
-    const hour_diff = Math.floor((difference % (1000 * 60 * 60 *24 ))/ (1000 * 60 * 60))
-    const day_diff = Math.floor(difference /(1000 * 60 * 60 * 24))
+    const hours_diff = Math.floor((difference % (1000 * 60 * 60 *24 ))/ (1000 * 60 * 60))
+    const days_diff = Math.floor(difference /(1000 * 60 * 60 * 24))
 
-    if (seconds && minutes && hour && day )
+    if (seconds && minutes && hours && days )
     {
-        seconds.textContent = seconds_diff.toString().padStart(2, '0')
-        minutes.textContent = minutes_diff.toString().padStart( 2, '0')
-        hour.textContent = hour_diff.toString().padStart(2, '0')
-        day.textContent = day_diff.toString().padStart(2, '0')
+        seconds.forEach(second => {
+            if (second.textContent != seconds_diff.toString().padStart(2, '0')){                
+                second.closest(".bottom")?.classList.add("animation")
+            } else{
+                second.closest(".bottom")?.classList.remove("animation")
+           }
+            second.textContent = seconds_diff.toString().padStart(2, '0')
+        
+        })
+        minutes.forEach(minute => {
+            if (minute.textContent !=  minutes_diff.toString().padStart(2, '0')){                
+                minute.closest(".bottom")?.classList.add("animation")
+                console.log(minute.textContent,  minutes_diff.toString().padStart(2, '0'))
+            } else{
+                minute.closest(".bottom")?.classList.remove("animation")
+           }
+            minute.textContent = minutes_diff.toString().padStart(2, '0')
+           
+        })
+        hours.forEach(hour => {
+            if (hour.textContent != hours_diff.toString().padStart(2, '0')){                
+                hour.closest(".bottom")?.classList.add("animation")
+            } else{
+                hour.closest(".bottom")?.classList.remove("animation")
+           }
+            hour.textContent = hours_diff.toString().padStart(2, '0')
+
+        })
+       days.forEach(day => {
+        if (day.textContent != days_diff.toString().padStart(2, '0')){                
+            day.closest(".bottom")?.classList.add("animation")
+        } else{
+            day.closest(".bottom")?.classList.remove("animation")
+       }
+           day.textContent =days_diff.toString().padStart(2, '0')
+        })
     }
 }
 setInterval(() => {
